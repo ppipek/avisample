@@ -17,4 +17,5 @@ RoxygenNote: 7.1.1.9001
 Imports: 
     dplyr,
     tibble,
-    urltools
+    urltools,
+	utils
