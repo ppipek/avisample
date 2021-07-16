@@ -4,7 +4,10 @@
 \alias{get_items}
 \title{Get Items}
 \usage{
-get_items(url)
+get_items(url, access_token)
+}
+\value{
+tibble
 }
 \description{
 Internal function that retrieves all items of in chunks
