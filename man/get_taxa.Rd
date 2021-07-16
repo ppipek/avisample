@@ -4,7 +4,7 @@
 \alias{get_taxa}
 \title{Get Taxa}
 \usage{
-get_taxa(scientific = "", common = "")
+get_taxa(access_token, scientific = "", common = "")
 }
 \arguments{
 \item{scientific}{A string pattern to filter scientific names}
