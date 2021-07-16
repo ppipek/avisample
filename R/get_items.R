@@ -1,8 +1,9 @@
 #' Get Items
 #'
-#' Internal function that retrieves all items of in chunks
+#' @description Internal function that retrieves all items of in chunks
 #'
 #' @importFrom jsonlite fromJSON
+#' @importFrom urltools param_set
 get_items <- function(url){
   result <- jsonlite::fromJSON(url)
   items <- result$items
