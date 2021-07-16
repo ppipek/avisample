@@ -8,7 +8,7 @@
 #' @param taxon_scientific Pattern to filter sample descriptions by scientific names
 #' @param country Pattern to filter sample descriptions by country
 #' @param tissue Pattern to filter sample descriptions by tissue type
-#' @output A tibble
+#' @return A tibble
 #' @export
 
 get_sample_descriptions <- function (taxon_common = "",taxon_scientific = "", country = "", tissue = "", perPage = 50, limit = 1000){
