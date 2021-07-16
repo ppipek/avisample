@@ -3,7 +3,6 @@
 #' @description Internal function that retrieves list of all taxa matching a filter string
 #'
 #' @param name A string pattern to filter tissue type names
-#' @importFrom jsonlite fromJSON
 #' @importFrom urltools param_set
 #' @importFrom utils URLencode
 #' @export
