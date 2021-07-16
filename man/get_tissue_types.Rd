@@ -4,11 +4,11 @@
 \alias{get_tissue_types}
 \title{Get Tissue Types}
 \usage{
-get_tissue_types(name = NULL)
+get_tissue_types(access_token, name = NULL)
 }
 \arguments{
 \item{name}{A string pattern to filter tissue type names}
 }
 \description{
-Internal function that retrieves list of all taxa matching a filter string
+Internal function that retrieves list of all Tissues types matching a filter string that are already in the dataset
 }
