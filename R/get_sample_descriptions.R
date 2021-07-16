@@ -18,5 +18,5 @@ get_sample_descriptions <- function (access_token, taxon_common = "",taxon_scien
   url <- urltools::param_set(url, key = "filter[country][like]", value = urltools::url_encode(country))
   url <- urltools::param_set(url, key = "per-page", value = perPage)
   url <- urltools::param_set(url, key = "limit", value = limit)
-  return(get_items(url, access_key))
+  return(get_items(url, access_token))
 }
