@@ -5,6 +5,7 @@
 \title{Get Sample descriptions}
 \usage{
 get_sample_descriptions(
+  access_token,
   taxon_common = "",
   taxon_scientific = "",
   country = "",
@@ -14,6 +15,8 @@ get_sample_descriptions(
 )
 }
 \arguments{
+\item{access_token}{API key to authenticate to AviSample rest API}
+
 \item{taxon_common}{Pattern to filter sample descriptions by common names}
 
 \item{taxon_scientific}{Pattern to filter sample descriptions by scientific names}
@@ -21,12 +24,10 @@ get_sample_descriptions(
 \item{country}{Pattern to filter sample descriptions by country}
 
 \item{tissue}{Pattern to filter sample descriptions by tissue type}
-
-\item{api_key}{API key to authenticate to AviSample rest API}
 }
 \value{
 A tibble
 }
 \description{
-Retrieves the list of sample descriptions. The function is intentionally slow to prevent server overload. By default it is limited to 1000 items but this parameter can be set.
+Retrieves the list of sample descriptions. The function is intentionally slow to prevent server overload. By default it is limited to 1000 items but this parameter can be overriden.
 }
