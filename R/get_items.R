@@ -3,21 +3,30 @@
 #' @description Internal function that retrieves all items of in chunks
 #'
 #' @importFrom jsonlite fromJSON
-#' @importFrom urltools param_set
-get_items <- function(url){
+#' @importFrom urltools param_set url_encode
+#' @importFrom tibble tibble
+#' @return tibble
+get_items <- function(url, access_token){
+  url <- urltools::param_set(url, key = "access-token", value = url_encode(access_token))
   result <- jsonlite::fromJSON(url)
   items <- result$items
-  meta <- result$`_meta`
-  links <- result$`_links`
-  page_count <- meta$pageCount
+  page_count <- result$`_meta`$pageCount
+  # links <- result$`_links`
+  # page_count <- meta$pageCount
 
-  # for the remaining pages
-  for(i in 2:page_count){
-    Sys.sleep(2) # wait not to overload the server
-    url <- urltools::param_set(url, key = "page", value = i)
-    result_new <- jsonlite::fromJSON(url)
-    items_new <- result_new$items
-    items <- rbind(items, items_new)
+  if(page_count > 1){
+    # for the remaining pages
+    for(i in 2:page_count){
+      Sys.sleep(2) # wait not to overload the server
+      url_new <- urltools::param_set(url, key = "page", value = i)
+      result_new <- jsonlite::fromJSON(url_new)
+      items_new <- result_new$items
+      items <- rbind(items, items_new)
+    }
   }
-  return(items)
+  
+  items %>% tibble()
 }
+
+
+
