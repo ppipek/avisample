@@ -1,6 +1,6 @@
 #' Get Sample descriptions
 #'
-#' Retrieves the list of sample descriptions. The function is intentionally slow to prevent server overload. By default it is limited to 1000 items but this parameter can be set.
+#' @description Retrieves the list of sample descriptions. The function is intentionally slow to prevent server overload. By default it is limited to 1000 items but this parameter can be set.
 #'
 #' @importFrom urltools param_set URLencode
 #' @param api_key API key to authenticate to AviSample rest API
