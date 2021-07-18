@@ -29,18 +29,40 @@ To use the API, you will need an account
 
 ``` r
 library(avisample)
+```
 
+#### Redstart blood samples
+
+``` r
 ## Show descriptions of redstart blood samples
 redstart_blood <- gets_sample_descriptions(your_api_key, taxon_common = "redstart", tissue = "blood")
+```
 
+``` r
+redstart_blood
+#> # A tibble: 10 x 12
+#>    asid   tissue    tissue_id taxon_common  taxon_scientific   taxon_id latitude
+#>    <chr>  <chr>         <int> <chr>         <chr>                 <int>    <dbl>
+#>  1 AS011~ blood            63 American Red~ Setophaga ruticil~    31731     18.0
+#>  2 AS011~ blood            63 American Red~ Setophaga ruticil~    31731     15.2
+#>  3 AS011~ blood            63 American Red~ Setophaga ruticil~    31731     44.6
+#>  4 AS011~ blood pl~         2 American Red~ Setophaga ruticil~    31731     44.6
+#>  5 AS011~ blood            63 American Red~ Setophaga ruticil~    31731     18.0
+#>  6 AS024~ blood pl~         2 Black Redsta~ Phoenicurus ochru~    27311     49.6
+#>  7 AS024~ blood ce~         1 Black Redsta~ Phoenicurus ochru~    27311     49.6
+#>  8 AS024~ blood pl~         2 Common Redst~ Phoenicurus phoen~    27303     50.2
+#>  9 AS024~ blood ce~         1 Common Redst~ Phoenicurus phoen~    27303     50.2
+#> 10 AS036~ blood ce~         1 Black Redsta~ Phoenicurus ochru~    27311     48.9
+#> # ... with 5 more variables: longitude <dbl>, country <chr>, country_id <int>,
+#> #   date <chr>, end_date <chr>
+```
+
+#### Czech warblers
+
+``` r
 ## Show descriptions of warbler samples from Czech Republic
 czech_warblers <- gets_sample_descriptions(your_api_key, taxon_common = "warblers", country = "Czech Republic")
 ```
-
-## Results
-
-The package returns the results (`czech_warblers`, `redstart_blood`) in
-a tibble format.
 
 ``` r
 czech_warblers
@@ -59,20 +81,4 @@ czech_warblers
 #> 10 AS000~ feather         5 Eurasian Reed ~ Acrocephalus scir~    23942     50.5
 #> # ... with 28 more rows, and 5 more variables: longitude <dbl>, country <chr>,
 #> #   country_id <int>, date <chr>, end_date <chr>
-redstart_blood
-#> # A tibble: 10 x 12
-#>    asid   tissue    tissue_id taxon_common  taxon_scientific   taxon_id latitude
-#>    <chr>  <chr>         <int> <chr>         <chr>                 <int>    <dbl>
-#>  1 AS011~ blood            63 American Red~ Setophaga ruticil~    31731     18.0
-#>  2 AS011~ blood            63 American Red~ Setophaga ruticil~    31731     15.2
-#>  3 AS011~ blood            63 American Red~ Setophaga ruticil~    31731     44.6
-#>  4 AS011~ blood pl~         2 American Red~ Setophaga ruticil~    31731     44.6
-#>  5 AS011~ blood            63 American Red~ Setophaga ruticil~    31731     18.0
-#>  6 AS024~ blood pl~         2 Black Redsta~ Phoenicurus ochru~    27311     49.6
-#>  7 AS024~ blood ce~         1 Black Redsta~ Phoenicurus ochru~    27311     49.6
-#>  8 AS024~ blood pl~         2 Common Redst~ Phoenicurus phoen~    27303     50.2
-#>  9 AS024~ blood ce~         1 Common Redst~ Phoenicurus phoen~    27303     50.2
-#> 10 AS036~ blood ce~         1 Black Redsta~ Phoenicurus ochru~    27311     48.9
-#> # ... with 5 more variables: longitude <dbl>, country <chr>, country_id <int>,
-#> #   date <chr>, end_date <chr>
 ```
