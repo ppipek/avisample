@@ -40,24 +40,27 @@ redstart_blood <- readRDS("./data/redstart_blood.rds") %>% tibble()
 
 
 ## Examples
-```{r example, eval = FALSE}
+```{r example, eval = TRUE}
 library(avisample)
-
-## Show descriptions of redstart blood samples
-redstart_blood <- gets_sample_descriptions(your_api_key, taxon_common = "redstart", tissue = "blood")
-
-## Show descriptions of warbler samples from Czech Republic
-czech_warblers <- gets_sample_descriptions(your_api_key, taxon_common = "warblers", country = "Czech Republic")
-
-
-
 ```
 
+#### Redstart blood samples
+```{r redstart_blood, eval = FALSE}
+## Show descriptions of redstart blood samples
+redstart_blood <- gets_sample_descriptions(your_api_key, taxon_common = "redstart", tissue = "blood")
+```
 
-## Results
-The package returns the results (`czech_warblers`, `redstart_blood`) in a tibble format.  
-
-```{r results}
-czech_warblers
+```{r redstart_blood_results}
 redstart_blood
+```
+
+#### Czech warblers
+
+```{r czech_warblers, eval = FALSE}
+## Show descriptions of warbler samples from Czech Republic
+czech_warblers <- gets_sample_descriptions(your_api_key, taxon_common = "warblers", country = "Czech Republic")
+```
+
+```{r czech_warblers_results}
+czech_warblers
 ```
