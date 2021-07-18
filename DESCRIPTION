@@ -1,4 +1,4 @@
-Package: aviSample
+Package: avisample
 Title: Allows to retrieve data from AviSample network repository (via dedicated rest-api)
 Version: 0.0.3.9002
 Authors@R: 
