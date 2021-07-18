@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of aviSample package is to provide a bridge between AviSample Network rest-api and R
+The goal of avisample package is to provide a bridge between AviSample Network rest-api and R
 
 ## Installation
 
