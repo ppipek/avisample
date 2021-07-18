@@ -16,7 +16,7 @@ get_items <- function(url, access_token){
     results = list()
     results[[1]] <- first_result$items
     message(paste(total_count, "items in total, on", page_count, "pages"))
-    message(paste("Processing page 1/",page_count, sep="")
+    message(paste("Processing page 1/",page_count, sep=""))
 
     # for the remaining pages
     for(i in 2:page_count){
