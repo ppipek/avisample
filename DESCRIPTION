@@ -16,6 +16,5 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1.9001
 Depends: dplyr
 Imports: 
-    dplyr,
     tibble,
     urltools
