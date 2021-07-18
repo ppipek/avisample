@@ -20,14 +20,14 @@ get_items <- function(url, access_token){
 
     # for the remaining pages
     for(i in 2:page_count){
-      message(paste("Page",i))
+      message(paste("Processing page",i))
       Sys.sleep(2) # wait not to overload the server
       url_new <- urltools::param_set(url, key = "page", value = i)
       result_new <- jsonlite::fromJSON(url_new)
       results[[i]] <- result_new$items
     }
 
-    messsage("Done.")
+    message("Done.")
 
     results %>% bind_rows() %>% tibble()
   }
