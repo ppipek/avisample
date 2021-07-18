@@ -1,12 +1,13 @@
 #' Get Sample descriptions
 #'
-#' @description Retrieves the list of sample descriptions. The function is intentionally slow to prevent server overload. By default it is limited to 1000 items but this parameter can be overriden.
+#' @description Retrieves the list of sample descriptions. The function is intentionally slow to prevent server overload.
 #'
 #' @param access_token API key to authenticate to AviSample rest API
 #' @param taxon_common Pattern to filter sample descriptions by common names
 #' @param taxon_scientific Pattern to filter sample descriptions by scientific names
 #' @param country Pattern to filter sample descriptions by country
 #' @param tissue Pattern to filter sample descriptions by tissue type
+#' @param perPage Number of items on one page, maximum is 50 (and is set as default)
 #' @importFrom urltools param_set url_encode
 #' @return A tibble
 #' @export
@@ -16,6 +17,7 @@ get_sample_descriptions <- function (access_token, taxon_common = "",taxon_scien
   url <- urltools::param_set(url, key = "filter[taxon_common][like]", value = urltools::url_encode(taxon_common))
   url <- urltools::param_set(url, key = "filter[taxon_scientific][like]", value = urltools::url_encode(taxon_scientific))
   url <- urltools::param_set(url, key = "filter[country][like]", value = urltools::url_encode(country))
+  url <- urltools::param_set(url, key = "filter[tissue][like]", value = urltools::url_encode(tissue))
   url <- urltools::param_set(url, key = "per-page", value = perPage)
   url <- urltools::param_set(url, key = "limit", value = limit)
   return(get_items(url, access_token))
