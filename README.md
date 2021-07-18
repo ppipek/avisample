@@ -8,7 +8,7 @@
 <!-- badges: end -->
 
 The goal of `avisample` package is to provide a simple bridge between
-AviSample Network rest-api and R
+AviSample Network rest-api (<https://avisample.net/site/api>) and R
 
 ## Installation
 
