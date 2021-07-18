@@ -1,6 +1,6 @@
 #' Get Items
 #'
-#' @description Internal function that retrieves all items of in chunks
+#' @description Internal function that retrieves all items in chunks
 #'
 #' @importFrom jsonlite fromJSON
 #' @importFrom urltools param_set url_encode
@@ -16,7 +16,7 @@ get_items <- function(url, access_token){
     results = list()
     results[[1]] <- first_result$items
     message(paste(total_count, "items in total, on", page_count, "pages"))
-    message("Page 1")
+    message("Processing page 1")
 
     # for the remaining pages
     for(i in 2:page_count){
@@ -27,10 +27,13 @@ get_items <- function(url, access_token){
       results[[i]] <- result_new$items
     }
 
+    messsage("Done.")
+
     results %>% bind_rows() %>% tibble()
   }
 
   else{
+    message(paste(total_count, "items in total"))
     first_result$items %>% tibble()
   }
 }
