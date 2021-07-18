@@ -13,12 +13,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-# aviSample
+# avisample
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of avisample package is to provide a bridge between AviSample Network rest-api and R
+The goal of `avisample` package is to provide a simple bridge between AviSample Network rest-api and R
 
 ## Installation
 
@@ -28,27 +28,33 @@ You can install the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("ppipek/avisample")
 ```
-## Example
 
-This is a basic example which shows you how to solve a common problem:
+## Requirements
+To use the API, you will need an account (https://avisample.net/user/register) and an api_key 
 
-```{r example}
-library(aviSample)
-## basic example code
+```{r data, echo = FALSE, message = FALSE}
+library(dplyr)
+czech_warblers <- readRDS("./data/czech_warblers.rds") %>% tibble()
+redstart_blood <- readRDS("./data/redstart_blood.rds") %>% tibble()
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
 
-```{r cars}
-summary(cars)
+## Examples
+```{r example, eval = FALSE}
+library(avisample)
+
+## Show descriptions of redstart blood samples
+redstart_blood <- gets_sample_descriptions(your_api_key, taxon_common = "redstart", tissue = "blood")
+
+## Show descriptions of warbler samples from Czech Republic
+czech_warblers <- gets_sample_descriptions(your_api_key, taxon_common = "warblers", country = "Czech Republic")
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/master/examples>.
 
-You can also embed plots, for example:
+## Results
+The package returns the results (`czech_warblers`, `redstart_blood`) in a tibble format.  
 
-```{r pressure, echo = FALSE}
-plot(pressure)
+```{r results}
+czech_warblers
+redstart_blood
 ```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
