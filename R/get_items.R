@@ -5,7 +5,9 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom urltools param_set url_encode
 #' @importFrom tibble tibble
+#' @NoRd
 #' @return tibble
+#'
 get_items <- function(url, access_token){
   url <- urltools::param_set(url, key = "access-token", value = url_encode(access_token))
   first_result <- jsonlite::fromJSON(url)
