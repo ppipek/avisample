@@ -1,0 +1,66 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# avisample
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of `avisample` package is to provide a simple bridge between AviSample Network rest-api (https://avisample.net/site/api) and R
+
+## Installation
+
+You can install the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("ppipek/avisample")
+```
+
+## Requirements
+To use the API, you will need an account (https://avisample.net/user/register) and an api_key 
+
+```{r data, echo = FALSE, message = FALSE}
+library(dplyr)
+czech_warblers <- readRDS("./data/czech_warblers.rds") %>% tibble()
+redstart_blood <- readRDS("./data/redstart_blood.rds") %>% tibble()
+```
+
+
+## Examples
+```{r example, eval = TRUE}
+library(avisample)
+```
+
+#### Redstart blood samples
+```{r redstart_blood, eval = FALSE}
+## Show descriptions of redstart blood samples
+redstart_blood <- gets_sample_descriptions(your_api_key, taxon_common = "redstart", tissue = "blood")
+```
+
+```{r redstart_blood_results}
+redstart_blood
+```
+
+#### Czech warblers
+
+```{r czech_warblers, eval = FALSE}
+## Show descriptions of warbler samples from Czech Republic
+czech_warblers <- gets_sample_descriptions(your_api_key, taxon_common = "warblers", country = "Czech Republic")
+```
+
+```{r czech_warblers_results}
+czech_warblers
+```
