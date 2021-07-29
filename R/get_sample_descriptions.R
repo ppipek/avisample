@@ -16,6 +16,8 @@
 
 get_sample_descriptions <- function (access_token, taxon_common = NULL,taxon_scientific = NULL, country = NULL, tissue = NULL, perPage = 50, strict = F){
   url <- "https://avisample.net/api/sample"
+
+  # Build query - set params
   if(strict == F){
     if(!is.null(taxon_common)) url <- urltools::param_set(url, key = "filter[taxon_common][like]", value = urltools::url_encode(taxon_common))
     if(!is.null(taxon_scientific)) url <- urltools::param_set(url, key = "filter[taxon_scientific][like]", value = urltools::url_encode(taxon_scientific))
@@ -28,8 +30,24 @@ get_sample_descriptions <- function (access_token, taxon_common = NULL,taxon_sci
     if(!is.null(country)) url <- urltools::param_set(url, key = "filter[country][eq]", value = urltools::url_encode(country))
     if(!is.null(tissue)) url <- urltools::param_set(url, key = "filter[tissue][eq]", value = urltools::url_encode(tissue))
   }
-  url <- urltools::param_set(url, key = "per-page", value = perPage)
-  get_items(url, access_token)
 
-  # %>% mutate(date = lubridate::ymd(date), end_date = lubridate::ymd(end_date))
+  url <- urltools::param_set(url, key = "per-page", value = perPage)
+
+  # Retrieve the data and format the dates
+  get_items(url, access_token) %>%
+    mutate(date = string2date(date)) %>%
+    mutate(end_date = string2date(end_date))
 }
+
+
+#' String to Date
+#'
+#' @description Helper function to convert dates from char to date
+#'
+string2date <- function(date){
+  if((date == "null")|(date == "0000-00-00")) return(NA)
+  else return(lubridate::ymd(date))
+}
+
+
+
