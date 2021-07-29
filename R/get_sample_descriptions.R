@@ -34,19 +34,7 @@ get_sample_descriptions <- function (access_token, taxon_common = NULL,taxon_sci
   url <- urltools::param_set(url, key = "per-page", value = perPage)
 
   # Retrieve the data
-  get_items(url, access_token) %>%
-
-    # Convert dates to date format
-    mutate(date = ifelse(is_empty_date(date), date, lubridate::ymd(date)), end_date = ifelse(is_empty_date(end_date), date, lubridata::ymd(end_date)))
-}
-
-
-#' Is empty date
-#'
-#' @description Helper function to identify empty dates
-#'
-is_empty_date <- function(date){
-  is.na(date)|(date == "0000-00-00")
+  get_items(url, access_token)
 }
 
 
