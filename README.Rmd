@@ -58,7 +58,7 @@ redstart_blood
 
 ```{r czech_warblers, eval = FALSE}
 ## Show descriptions of warbler samples from Czech Republic
-czech_warblers <- gets_sample_descriptions(your_api_key, taxon_common = "warblers", country = "Czech Republic")
+czech_warblers <- gets_sample_descriptions(your_api_key, taxon_common = "warbler", country = "Czech Republic")
 ```
 
 ```{r czech_warblers_results}
