@@ -10,6 +10,7 @@
 #' @param perPage Number of items on one page, maximum is 50 (and is set as default)
 #' @param strict If set to true, filter will not look for substrings but only for exact matches
 #' @importFrom urltools param_set url_encode
+#' @importFrom lubridate ymd
 #' @return A tibble
 #' @export
 
@@ -28,5 +29,6 @@ get_sample_descriptions <- function (access_token, taxon_common = NULL,taxon_sci
     if(!is.null(tissue)) url <- urltools::param_set(url, key = "filter[tissue][eq]", value = urltools::url_encode(tissue))
   }
   url <- urltools::param_set(url, key = "per-page", value = perPage)
-  return(get_items(url, access_token))
+  get_items(url, access_token) %>%
+    mutate(date = ymd(date), end_date = ymd(end_date))
 }
