@@ -35,7 +35,7 @@ library(avisample)
 
 ``` r
 ## Show descriptions of redstart blood samples
-redstart_blood <- gets_sample_descriptions(your_api_key, taxon_common = "redstart", tissue = "blood")
+redstart_blood <- get_sample_descriptions(your_api_key, taxon_common = "redstart", tissue = "blood")
 ```
 
 ``` r
@@ -61,7 +61,7 @@ redstart_blood
 
 ``` r
 ## Show descriptions of warbler samples from Czech Republic
-czech_warblers <- gets_sample_descriptions(your_api_key, taxon_common = "warblers", country = "Czech Republic")
+czech_warblers <- get_sample_descriptions(your_api_key, taxon_common = "warblers", country = "Czech Republic")
 ```
 
 ``` r
