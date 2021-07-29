@@ -37,7 +37,7 @@ get_sample_descriptions <- function (access_token, taxon_common = NULL,taxon_sci
   get_items(url, access_token) %>%
 
     # Convert dates to date format
-    mutate(date = ifelse(is_empty_date(date), date, ymd(date)), end_date = ifelse(is_empty_date(end_date), date, ymd(end_date)))
+    mutate(date = ifelse(is_empty_date(date), date, lubridate::ymd(date)), end_date = ifelse(is_empty_date(end_date), date, lubridata::ymd(end_date)))
 }
 
 
