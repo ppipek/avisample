@@ -33,9 +33,11 @@ get_sample_descriptions <- function (access_token, taxon_common = NULL,taxon_sci
 
   url <- urltools::param_set(url, key = "per-page", value = perPage)
 
-  # Retrieve the data and format the dates
-  get_items(url, access_token)
-  # %>% mutate(date = string2date(date)) %>% mutate(end_date = string2date(end_date))
+  # Retrieve the data
+  get_items(url, access_toke) %>%
+
+    # Convert dates to date format
+    mutate(date = string2date(date), end_date = string2date(end_date))
 }
 
 
@@ -44,7 +46,7 @@ get_sample_descriptions <- function (access_token, taxon_common = NULL,taxon_sci
 #' @description Helper function to convert dates from char to date
 #'
 string2date <- function(date){
-  if((date == "null")|(date == "0000-00-00")) return(NA)
+  if((is.na(date))|(date == "0000-00-00")) return(NA)
   else return(lubridate::ymd(date))
 }
 
