@@ -34,9 +34,8 @@ get_sample_descriptions <- function (access_token, taxon_common = NULL,taxon_sci
   url <- urltools::param_set(url, key = "per-page", value = perPage)
 
   # Retrieve the data and format the dates
-  get_items(url, access_token) %>%
-    mutate(date = string2date(date)) %>%
-    mutate(end_date = string2date(end_date))
+  get_items(url, access_token)
+  # %>% mutate(date = string2date(date)) %>% mutate(end_date = string2date(end_date))
 }
 
 
