@@ -30,5 +30,5 @@ get_sample_descriptions <- function (access_token, taxon_common = NULL,taxon_sci
   }
   url <- urltools::param_set(url, key = "per-page", value = perPage)
   get_items(url, access_token) %>%
-    mutate(date = ymd(date), end_date = ymd(end_date))
+    mutate(date = lubridate::ymd(date), end_date = lubridate::ymd(end_date))
 }
