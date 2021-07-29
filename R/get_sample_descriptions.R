@@ -29,6 +29,7 @@ get_sample_descriptions <- function (access_token, taxon_common = NULL,taxon_sci
     if(!is.null(tissue)) url <- urltools::param_set(url, key = "filter[tissue][eq]", value = urltools::url_encode(tissue))
   }
   url <- urltools::param_set(url, key = "per-page", value = perPage)
-  get_items(url, access_token) %>%
-    mutate(date = lubridate::ymd(date), end_date = lubridate::ymd(end_date))
+  get_items(url, access_token)
+
+  # %>% mutate(date = lubridate::ymd(date), end_date = lubridate::ymd(end_date))
 }
